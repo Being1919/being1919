@@ -1,49 +1,136 @@
 
-<html>
-<head>
-<youtube.com>
-  </head>
-<h1> Welcome to Being 1919. We have a special PGP code to make sure nobody, tries to hijack the mission. Check the bottom of the page to see the PGP identification</h1>
-  <a href="https://en.m.wikipedia.org/wiki/1919"> Get into it</a>
-<p> 
-1,20,1!
-4,1,2!
-2,1,4!
-2,12,3!
-Space
-2,1,4!
-2,12,3!
-1,3!
-Space
-2,12,1!
-1,5,2!
-1,4,1!
-1,4,2!
-1,5,1!
-Space
-4,1,2!
-1,3!
-4,1,2!
-1,3!
-</p>
-  <h1> Being 1919 </h1>
-  <p>BEGIN PGP PUBLIC KEY BLOCK-----
-Version: BCPG C# v1.6.1.0
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-mQENBFu3g80BCACrMBgs8Q4E733o0TpxHeq2e3rsiaNr7L/ovH/YQdFoKsHp1BUq
-DwbzbiKNeon6G8dx5ahJL6T82zDTu+Y0XY4L2Ysql2NrXCgMFWGXl2Ht3A80aCpr
-7dzlAQ6kJQ7IiGPXN4mlqzzU8gFyvBce+apDE5V0Y36Itj1F9V7rM+8bQfUun4QT
-lKBqDhCW18hLnohgoaUl2RzvxwZOgRiq2NXDERhD9V/Xy36v7o7KAvjXqXL9XM+3
-4AO9/oFH+qad0zftpAcNU4sg7Z0fP0NdJgkbsIeNMuoaVgBegxY9W8ZAhrKAqc6T
-Twr3neHroN7EA2oZ3YLrVbjjLPxr0pkOhn1DABEBAAG0AIkBHAQQAQIABgUCW7eD
-zQAKCRDWPmHKISbihqMyB/9YbrfwQEUYySj3+IhNvK+cdFGtdpnJhuetEizxaFRL
-VBGv6JDQLVtjLxu+dY7IF+gCACp36bBJf4rgGAWRzoWaFBve2umMRVnODEPcVxF2
-nXoZp3BLi+CxgSF237J1N/ZVrmd1V087BNMTyQujIvNUwlaAmaPIIqXV08bU14fp
-nZueZa+2xUyrD7Mn7Wohw7BWoyFiyo/s1iUgkECy4OcjZE0Pn34vo0yFT20+nwQq
-/TL3z1OYiC6k/K23CQmCIY7sqFF04ZA82oqZS68Zb6sE9S7PwUpV8gvfUh9aqz8p
-6jelJUF2j8V5zBSyioEMytxa8IvHep/l+RuL3Eo11oQb
-=Dvjh
------END PGP PUBLIC KEY BLOCK----- </p>
+<html>
+    <head>
+		<meta http-equiv="content-type" content="text/php; charset=utf-8" />
+		
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="css/chess.css" />
+        
+        
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.5.1/backbone-min.js"></script>
+		
+        <title>Thomas Davis - Chess Board</title>
+        
+    </head>
+
+    <body>
+        <div class="container">
+            
+			<div class="sideMenu">
+				Thomas Davis - Application
+				<ul>
+					<li><a href="docs/chess.html">Annotated Source Code</a></li>
+					<li><a href="tests">Test Suite</a></li>
+				</ul>
+				<h3>Chess Controls</h3>
+				<p>Buggy example of using the API</p>
+				<input type="button" value="clearBoard" id="clearBoard" />
+				<input type="button" value="resetBoard" id="resetBoard" />
+				<input value="H7" id="oldposition" />
+				<input value="H5" id="newposition" />
+				<input type="button" value="changePosition" id="changePosition" />
+				<input value="D1" id="lookup" />
+				<input type="button" value="lookupPosition" id="lookupPosition" />
+			</div>
+
+
+            <div class="contentPane">
+				
+				<table id="chess_board" cellpadding="0" cellspacing="0">
+					<tr>
+						<td id="A8"></td>
+						<td id="B8"></td>
+						<td id="C8"></td>
+						<td id="D8"></td>
+						<td id="E8"></td>
+						<td id="F8"></td>
+						<td id="G8"></td>
+						<td id="H8"></td>
+					</tr>
+					<tr>
+						<td id="A7"></td>
+						<td id="B7"></td>
+						<td id="C7"></td>
+						<td id="D7"></td>
+						<td id="E7"></td>
+						<td id="F7"></td>
+						<td id="G7"></td>
+						<td id="H7"></td>
+					</tr>
+					<tr>
+						<td id="A6"></td>
+						<td id="B6"></td>
+						<td id="C6"></td>
+						<td id="D6"></td>
+						<td id="E6"></td>
+						<td id="F6"></td>
+						<td id="G6"></td>
+						<td id="H6"></td>
+					</tr>
+					<tr>
+						<td id="A5"></td>
+						<td id="B5"></td>
+						<td id="C5"></td>
+						<td id="D5"></td>
+						<td id="E5"></td>
+						<td id="F5"></td>
+						<td id="G5"></td>
+						<td id="H5"></td>
+					</tr>
+					<tr>
+						<td id="A4"></td>
+						<td id="B4"></td>
+						<td id="C4"></td>
+						<td id="D4"></td>
+						<td id="E4"></td>
+						<td id="F4"></td>
+						<td id="G4"></td>
+						<td id="H4"></td>
+					</tr>
+					<tr>
+						<td id="A3"></td>
+						<td id="B3"></td>
+						<td id="C3"></td>
+						<td id="D3"></td>
+						<td id="E3"></td>
+						<td id="F3"></td>
+						<td id="G3"></td>
+						<td id="H3"></td>
+					</tr>
+					<tr>
+						<td id="A2"></td>
+						<td id="B2"></td>
+						<td id="C2"></td>
+						<td id="D2"></td>
+						<td id="E2"></td>
+						<td id="F2"></td>
+						<td id="G2"></td>
+						<td id="H2"></td>
+					</tr>
+					<tr>
+						<td id="A1"></td>
+						<td id="B1"></td>
+						<td id="C1"></td>
+						<td id="D1"></td>
+						<td id="E1"></td>
+						<td id="F1"></td>
+						<td id="G1"></td>
+						<td id="H1"></td>
+					</tr>
+				</table>
+            </div>
+        </div>
+       <!-- Include the ChessBoard Api -->
+		<script src="js/chess.js"></script>
+       <!-- Include the Backbone.js MVC's -->
+		<script src="js/game.js"></script>
+    </body>
+
+
 </html>
-  
- 
